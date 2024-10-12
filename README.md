@@ -1,9 +1,9 @@
 # Data Scientist Junior
 #### Technical Skills: Python, C/C++, Java, SQL, Machine Learning, Tensorflow, Deep Learning, 
 ## Education
--Undegraduate, Artificial Intelligence | Institut de Formation et de Recherche en Informatique(IFRI): University of Abomey-Calavi (UAC) (_October 2022 - Present_)
+- Undegraduate, Artificial Intelligence | Institut de Formation et de Recherche en Informatique(IFRI): University of Abomey-Calavi (UAC) (_October 2022 - Present_)
 ## Certifications
--[OpenCV's TensorFlow Keras Bootcamp](https://courses.opencv.org/certificates/910c1b8e78404da2b6e95e903feb30e4)
+- [OpenCV's TensorFlow Keras Bootcamp](https://courses.opencv.org/certificates/910c1b8e78404da2b6e95e903feb30e4)
 ## Projects
 ### Classification of dog and cat breed images using deep learning (CNN): Dataset Oxford-IIIT Pet
 [Publication](https://colab.research.google.com/drive/15lHg76RswLNc0HIqBtJIFVHA5w1CRjT2?authuser=1#scrollTo=UuGAaBXuoHW1)
