@@ -9,7 +9,7 @@
 ## Experiences
 - Software Engineer Internship at [Jilmonde Consulting](https://jilmondeconsulting.com/)
 ## Projects
-### Classification of dog and cat breed images using deep learning (CNN): Dataset Oxford-IIIT Pet
+### Classification of Dog and Cat breed images using Deep Learning (CNN): Dataset Oxford-IIIT Pet
 
 [Publication](https://colab.research.google.com/drive/15lHg76RswLNc0HIqBtJIFVHA5w1CRjT2?authuser=1#scrollTo=UuGAaBXuoHW1)
 
@@ -22,4 +22,4 @@ The main objective of this project is to develop a classification model capable 
 ## Publications
 - [LinkdIn](https://www.linkedin.com/in/st%C3%A9phane-bah-98a87525a/)
 ## Contact Me
-- Email: (stephanebah083@gmail.com)
+- Email: stephanebah083@gmail.com
