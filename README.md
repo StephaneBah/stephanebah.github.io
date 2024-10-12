@@ -1,13 +1,18 @@
 # Data Scientist Junior
+
 ## Technical Skills: 
 - Programming Languages: Python, R, C/C++, SQL
 - Technologies & Tools: Tensorflow, Scikit-Learn, OpenCV, Django
+
 ## Education
 - Undegraduate, Artificial Intelligence | Institut de Formation et de Recherche en Informatique(IFRI): University of Abomey-Calavi (UAC) (_October 2022 - Present_)
+
 ## Certifications
 - [OpenCV's TensorFlow Keras Bootcamp](https://courses.opencv.org/certificates/910c1b8e78404da2b6e95e903feb30e4)
+
 ## Experiences
 - Software Engineer Internship at [Jilmonde Consulting](https://jilmondeconsulting.com/)
+
 ## Projects
 ### Classification of Dog and Cat breed images using Deep Learning (CNN): Dataset Oxford-IIIT Pet
 
@@ -23,5 +28,6 @@ This application allows you to perform several operations on images, such as: Ga
 
 ## Publications
 - [LinkedIn](https://www.linkedin.com/in/st%C3%A9phane-bah-98a87525a/)
+
 ## Contact Me
 - Email: stephanebah083@gmail.com
