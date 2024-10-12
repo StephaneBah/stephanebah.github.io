@@ -26,6 +26,8 @@ The main objective of this project is to develop a classification model capable 
 
 This application allows you to perform several operations on images, such as: Gaussian and Mean Filters, Binarization, Resizing, Rotation, Morphological Transformations (Dilation and Erosion)
 
+![Img_Prep](/assets/img/prep_img_project.png)
+
 ## Publications
 - [LinkedIn](https://www.linkedin.com/in/st%C3%A9phane-bah-98a87525a/)
 
