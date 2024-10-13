@@ -17,7 +17,7 @@
 The main objective of this project is to develop a classification model capable of differentiating dogs and cats based on 37 different classes. Using a dataset containing thousands of images, we used deep neural networks (CNN) to train our model. For performance reasons, we created the model based on the convolution architecture of the pre-trained VGG19 model and fine-tuned it to achieve 53% performance on the training set and 41% performance on the test set.
 
 ### Image Processing Project
-This [application]((https://huggingface.co/spaces/StephaneBah/Image_Processing) allows you to perform several operations on images, such as: Gaussian and Mean Filters, Binarization, Resizing, Rotation, Morphological Transformations (Dilation and Erosion)
+This [application](https://huggingface.co/spaces/StephaneBah/Image_Processing) allows you to perform several operations on images, such as: Gaussian and Mean Filters, Binarization, Resizing, Rotation, Morphological Transformations (Dilation and Erosion)
 
 ![Img_Prep](/assets/img/cold_palmer2.png)
 
