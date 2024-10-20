@@ -21,6 +21,11 @@ This [application](https://huggingface.co/spaces/StephaneBah/Image_Processing) a
 
 ![Img_Prep](/assets/img/cold_palmer2.png)
 
+### FashionLook
+(FashionLook)[https://huggingface.co/spaces/StephaneBah/FashionLook] is the future Shazam of the world of fashion. Detect clothes, get recommendations according to your tastes. Did you like the model's outfit? Or do you absolutely want to get your hands on something new? Well, that's my vision of FashionLook 
+
+![Img Prep](/assets/img/fashionlookl1_1.png)
+
 ## Publications
 - [LinkedIn](https://www.linkedin.com/in/st%C3%A9phane-bah-98a87525a/)
 
