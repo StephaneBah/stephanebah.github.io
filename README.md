@@ -1,4 +1,4 @@
-# Data Scientist Junior
+# ML Scientist Junior
 
 ## Technical Skills: 
 - Programming Languages: Python, R, C/C++, SQL
@@ -9,6 +9,7 @@
 
 ## Certifications
 - [OpenCV's TensorFlow Keras Bootcamp](https://courses.opencv.org/certificates/910c1b8e78404da2b6e95e903feb30e4)
+- [Stanford's Advanced Learning Algorithms Course on Coursera](https://coursera.org/verify/69C0WLSE43U7)
 
 ## Projects
 ### Classification of Dog and Cat breed images using Deep Learning (CNN): Dataset Oxford-IIIT Pet
