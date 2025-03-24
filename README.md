@@ -28,7 +28,8 @@ This [application](https://huggingface.co/spaces/StephaneBah/Image_Processing) a
 ![Img Prep](/assets/img/fashionlookl1_1.png)
 
 ## Publications
-- [LinkedIn](https://www.linkedin.com/in/st%C3%A9phane-bah-98a87525a/)
+- [LinkedIn](https://www.linkedin.com/in/stephanebah/)
+- [Github](https://github.com/StephaneBah/)
 
 ## Contact Me
 - Email: stephanebah083@gmail.com
