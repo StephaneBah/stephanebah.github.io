@@ -1,32 +1,4 @@
 [
-  {
-    "name": "2025-11-01-llms-droit-africain.md",
-    "meta": {
-      "title": "LLMs et Droit Africain : Retour sur la compétition OHADA",
-      "date": "2025-11-01",
-      "tags": [
-        "NLP",
-        "LLM",
-        "Africa",
-        "Legal AI"
-      ],
-      "description": "Ce que j'ai appris en appliquant les Large Language Models au droit commercial africain lors de la compétition Zindi.",
-      "readTime": "10"
-    }
-  },
-  {
-    "name": "2025-12-15-ai4ckd-ml-healthcare.md",
-    "meta": {
-      "title": "Prédire l'insuffisance rénale avec le machine learning : leçons du projet AI4CKD",
-      "date": "2025-12-15",
-      "tags": [
-        "ML",
-        "Healthcare",
-        "Python",
-        "Scikit-learn"
-      ],
-      "description": "Comment j'ai construit un système de diagnostic assisté pour la maladie rénale chronique, et les compromis clés entre performance et interprétabilité.",
-      "readTime": "12"
-    }
-  }
+  "2025-12-15-ai4ckd-ml-healthcare.md",
+  "2025-11-01-llms-droit-africain.md"
 ]
