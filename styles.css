@@ -557,20 +557,36 @@ ul { list-style: none; }
 .markdown-body hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
 
 /* ── Contact Section ─────────────────────────────────────────── */
-.contact-section { padding: 4rem 0; border-top: 1px solid var(--border); background: var(--bg-subtle); }
+.contact-section { 
+  padding: 5rem 0; 
+  border-top: 1px solid var(--border); 
+  background: linear-gradient(to bottom, var(--bg-subtle) 0%, var(--bg) 100%);
+}
 .contact-section .section-title, .contact-section .section-subtitle { text-align: center; }
-.contact-methods { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+.contact-methods { 
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
 .contact-card {
   display: flex; 
   align-items: center; 
-  gap: 1rem;
-  padding: 1.25rem 1.5rem; 
+  gap: 1.2rem;
+  padding: 1.5rem 1.75rem; 
   background: var(--bg);
-  border: 1.5px solid var(--border); 
+  border: 2px solid var(--border); 
   border-radius: var(--radius-xl);
   transition: all var(--transition-smooth);
   position: relative;
   overflow: hidden;
+  flex: 1;
+  min-width: 280px;
+  max-width: 320px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
 }
 .contact-card::before {
   content: '';
@@ -581,10 +597,9 @@ ul { list-style: none; }
   transition: opacity var(--transition-smooth);
 }
 .contact-card:hover { 
-  border-color: var(--primary); 
-  box-shadow: var(--shadow-colored); 
-  transform: translateY(-4px); 
-  color: #fff; 
+  border-color: transparent; 
+  box-shadow: var(--shadow-xl); 
+  transform: translateY(-6px) scale(1.02); 
 }
 .contact-card:hover::before {
   opacity: 1;
@@ -593,10 +608,42 @@ ul { list-style: none; }
   position: relative;
   z-index: 1;
 }
-.contact-icon { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: var(--primary-light); border-radius: var(--radius); color: var(--primary); flex-shrink: 0; }
-.contact-card:hover .contact-icon { background: var(--primary); color: #fff; }
-.contact-card h3 { font-size: .95rem; font-weight: 600; margin-bottom: .2rem; }
-.contact-card p { font-size: .82rem; color: var(--text-tertiary); }
+.contact-icon { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 52px; 
+  height: 52px; 
+  background: var(--primary-light); 
+  border-radius: var(--radius-lg); 
+  color: var(--primary); 
+  flex-shrink: 0;
+  transition: all var(--transition-smooth);
+}
+.contact-card:hover .contact-icon { 
+  background: rgba(255,255,255,.95); 
+  color: var(--primary);
+  transform: scale(1.1);
+}
+.contact-card h3 { 
+  font-size: 1rem; 
+  font-weight: 700; 
+  margin-bottom: .3rem; 
+  color: var(--text);
+  transition: color var(--transition-smooth);
+}
+.contact-card:hover h3 {
+  color: #fff;
+}
+.contact-card p { 
+  font-size: .875rem; 
+  color: var(--text-secondary);
+  transition: color var(--transition-smooth);
+  word-break: break-word;
+}
+.contact-card:hover p {
+  color: rgba(255,255,255,.9);
+}
 
 /* ── Content Loader UI ───────────────────────────────────────── */
 .cl-spinner { display: flex; justify-content: center; gap: .5rem; padding: 4rem; }
@@ -650,10 +697,12 @@ ul { list-style: none; }
   .hero-actions { flex-direction: column; }
   .hero-actions .btn { width: 100%; justify-content: center; }
   .projects-grid { grid-template-columns: 1fr; }
-  .contact-methods { grid-template-columns: 1fr; }
+  .contact-methods { flex-direction: column; align-items: center; }
+  .contact-card { max-width: 100%; }
 }
 @media (max-width: 480px) {
   .container, .container-narrow { padding: 0 1.25rem; }
   .section-title { font-size: 1.4rem; }
   .hero-text h1 { font-size: 1.6rem; }
+  .contact-card { min-width: 100%; }
 }
