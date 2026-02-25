@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet — Stéphane AHOLOU-BAH</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><a href="index.html">S.A-B</a></div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html"         class="nav-link"        data-i18n="nav.home">Accueil</a></li>
+                <li><a href="about.html"         class="nav-link"        data-i18n="nav.about">À propos</a></li>
+                <li><a href="projects.html"      class="nav-link active" data-i18n="nav.projects">Projets</a></li>
+                <li><a href="blog.html"          class="nav-link"        data-i18n="nav.blog">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link"        data-i18n="nav.contact">Contact</a></li>
+            </ul>
+            <div class="lang-switcher">
+              <button class="lang-btn" data-lang="fr">FR</button>
+              <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <main class="post-page">
+        <div class="container container-narrow">
+            <div id="project-container"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p data-i18n="footer.copy">&copy; 2025 Stéphane AHOLOU-BAH. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
+    <script src="content-loader.js"></script>
+    <script>
+        I18n.init();
+        const params = new URLSearchParams(window.location.search);
+        const slug = params.get('slug');
+        if (slug) {
+            ContentLoader.loadProject(slug, '#project-container');
+        } else {
+            document.getElementById('project-container').innerHTML =
+                '<p class="cl-error">Projet introuvable. <a href="projects.html">Retour aux projets</a></p>';
+        }
+    </script>
+</body>
+</html>

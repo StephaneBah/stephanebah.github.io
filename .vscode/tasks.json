@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Local Dev Server",
+			"type": "shell",
+			"command": "C:/Users/Stef/AppData/Local/Programs/Python/Python311/python.exe -m http.server 3000",
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}

@@ -1,0 +1,82 @@
+name: Generate Content Indexes
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '_posts/**'
+      - '_projects/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-indexes:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate indexes for _posts and _projects
+        run: |
+          python3 << 'EOF'
+          import os
+          import json
+          from pathlib import Path
+
+          def generate_index(directory):
+              """Generate index.json for markdown files in directory"""
+              path = Path(directory)
+              if not path.exists():
+                  print(f"⚠️  Directory {directory} does not exist")
+                  return
+              
+              # Get all .md files
+              md_files = sorted(
+                  [f.name for f in path.glob('*.md')],
+                  reverse=True  # Most recent first (by filename)
+              )
+              
+              if not md_files:
+                  print(f"⚠️  No markdown files found in {directory}")
+                  return
+              
+              # Write index.json
+              index_path = path / 'index.json'
+              with open(index_path, 'w', encoding='utf-8') as f:
+                  json.dump(md_files, f, indent=2, ensure_ascii=False)
+              
+              print(f"✓ Generated {index_path} with {len(md_files)} files")
+              for file in md_files:
+                  print(f"  - {file}")
+
+          # Generate indexes
+          print("🔄 Generating content indexes...")
+          generate_index('_posts')
+          generate_index('_projects')
+          print("✅ Index generation complete!")
+          EOF
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --exit-code _posts/index.json _projects/index.json || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push if changed
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add _posts/index.json _projects/index.json
+          git commit -m "🤖 Auto-generate content indexes"
+          git push
