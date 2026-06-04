@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import CategoryIcon from '../../components/CategoryIcon.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { CATEGORY_LABELS } from '../../site';
+
+const projects = (await getCollection('projects', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const usedCats = [...new Set(projects.map((p) => p.data.category))];
+const filters = [{ key: 'all', label: 'Tous' }, ...usedCats.map((c) => ({ key: c, label: CATEGORY_LABELS[c] ?? c }))];
+---
+<Base title="Projets" description="Projets de Stéphane AHOLOU-BAH : MedVoice (ASR médical), AI4CKD, OHADA Law (RAG), Computer Vision, optimisation combinatoire.">
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">Travaux</p>
+      <h1>Projets</h1>
+      <p>Recherche appliquée et systèmes ML : du problème à la méthodologie, jusqu'aux résultats.</p>
+    </div>
+  </section>
+
+  <section class="container section" style="padding-top:2rem;">
+    <div class="filters" id="filters">
+      {filters.map((f, i) => (
+        <button class:list={['filter-btn', { active: i === 0 }]} data-filter={f.key}>{f.label}</button>
+      ))}
+    </div>
+
+    <div class="project-list" id="grid">
+      {projects.map((p) => {
+        const hasCover = !!p.data.cover;
+        return (
+          <a class="project-row" href={`/projects/${p.id}`} data-category={p.data.category}>
+            <div class={`project-thumb ${hasCover ? '' : `icon icon-${p.data.category}`}`}>
+              {hasCover ? <img src={p.data.cover} alt={p.data.title} /> : <CategoryIcon category={p.data.category} />}
+            </div>
+            <div class="project-row-body">
+              <div class="project-row-head">
+                <span class="project-row-title">{p.data.title}</span>
+                <span class="mono-tag">{CATEGORY_LABELS[p.data.category] ?? p.data.category}</span>
+                {p.data.status && (
+                  <span class:list={['status', p.data.status === 'Déployé' ? 'status-live' : p.data.status === 'Vainqueur' ? 'status-win' : 'status-done']}>{p.data.status}</span>
+                )}
+              </div>
+              <p class="project-row-desc">{p.data.description}</p>
+              <div class="chip-row">{p.data.tags.slice(0, 5).map((t) => <span class="chip">{t}</span>)}</div>
+            </div>
+            <div class="project-row-meta">
+              <span class="project-row-date"><FormattedDate date={p.data.date} month="short" /></span>
+              <div style="display:flex; gap:.5rem;">
+                {p.data.github && <span class="icon-link" aria-hidden="true"><Icon name="github" size={16} /></span>}
+                {p.data.demo && <span class="icon-link" aria-hidden="true"><Icon name="external" size={15} /></span>}
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+
+  <script>
+    const btns = document.querySelectorAll<HTMLButtonElement>('#filters .filter-btn');
+    const rows = document.querySelectorAll<HTMLElement>('#grid .project-row');
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        btns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        rows.forEach((row) => {
+          row.style.display = f === 'all' || row.dataset.category === f ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</Base>

@@ -1,0 +1,81 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import CategoryIcon from '../components/CategoryIcon.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import { SITE } from '../site';
+
+const projects = (await getCollection('projects', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const featured = projects.filter((p) => p.data.featured).concat(projects.filter((p) => !p.data.featured)).slice(0, 3);
+---
+<Base>
+  <!-- Hero -->
+  <section class="hero container">
+    <div class="hero-grid">
+      <div class="fade-up">
+        <p class="eyebrow">{SITE.role}</p>
+        <h1>Stéphane<br /><span class="accent">AHOLOU-BAH</span></h1>
+        <p class="hero-lead">{SITE.tagline}</p>
+        <div class="hero-actions">
+          <a href="/projects" class="btn btn-primary">Voir les projets <Icon name="arrow" size={16} /></a>
+          <a href="/about" class="btn btn-outline">À propos</a>
+        </div>
+        <div class="hero-social">
+          <a href={SITE.social.github} target="_blank" rel="noopener" aria-label="GitHub"><Icon name="github" size={22} /></a>
+          <a href={SITE.social.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" size={22} /></a>
+          <a href={`mailto:${SITE.email}`} aria-label="Email"><Icon name="mail" size={22} /></a>
+        </div>
+      </div>
+      <div class="hero-photo fade-up">
+        <img src="/assets/img/image.jpeg" alt="Stéphane AHOLOU-BAH" width="230" height="290" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured projects -->
+  <section class="container section" style="padding-top:0;">
+    <div style="display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap;">
+      <div>
+        <p class="eyebrow">Sélection</p>
+        <h2 class="section-title">Projets en avant</h2>
+      </div>
+      <a href="/projects" class="btn btn-outline btn-sm">Tous les projets <Icon name="arrow" size={15} /></a>
+    </div>
+
+    <div class="project-list" style="margin-top:1.5rem;">
+      {featured.map((p) => {
+        const hasCover = !!p.data.cover;
+        return (
+          <a class="project-row" href={`/projects/${p.id}`}>
+            <div class={`project-thumb ${hasCover ? '' : `icon icon-${p.data.category}`}`}>
+              {hasCover ? <img src={p.data.cover} alt={p.data.title} /> : <CategoryIcon category={p.data.category} />}
+            </div>
+            <div class="project-row-body">
+              <div class="project-row-head">
+                <span class="project-row-title">{p.data.title}</span>
+              </div>
+              <p class="project-row-desc">{p.data.description}</p>
+              <div class="chip-row">{p.data.tags.slice(0, 4).map((t) => <span class="chip">{t}</span>)}</div>
+            </div>
+            <div class="project-row-meta">
+              <span class="project-row-date"><FormattedDate date={p.data.date} month="short" /></span>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact container-narrow" id="contact">
+    <p class="eyebrow">Contact</p>
+    <h2>Restons en contact</h2>
+    <p>Discutons d'IA, de recherche ou de collaboration.</p>
+    <div class="hero-actions" style="justify-content:center;">
+      <a href={`mailto:${SITE.email}`} class="btn btn-primary"><Icon name="mail" size={16} /> {SITE.email}</a>
+      <a href={SITE.cv} target="_blank" rel="noopener" class="btn btn-outline"><Icon name="cv" size={16} /> Télécharger le CV</a>
+    </div>
+  </section>
+</Base>

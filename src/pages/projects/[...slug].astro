@@ -1,0 +1,46 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { CATEGORY_LABELS } from '../../site';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects', ({ data }) => !data.draft);
+  return projects.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { data } = entry;
+const statusClass = data.status === 'Déployé' ? 'status-live' : data.status === 'Vainqueur' ? 'status-win' : 'status-done';
+---
+<Base title={data.title} description={data.description} image={data.cover ?? '/assets/img/image.jpeg'} type="article">
+  <article class="article container">
+    <div class="article-head">
+      <a href="/projects" class="back-link"><Icon name="back" size={15} /> Retour aux projets</a>
+      <div class="article-meta">
+        <span class="mono-tag">{CATEGORY_LABELS[data.category] ?? data.category}</span>
+        {data.status && <span class:list={['status', statusClass]}>{data.status}</span>}
+        <FormattedDate date={data.date} />
+      </div>
+      <h1 class="article-title">{data.title}</h1>
+      <p class="article-desc">{data.description}</p>
+      <div class="chip-row" style="margin-top:1rem;">{data.tags.map((t) => <span class="chip">{t}</span>)}</div>
+      {(data.github || data.demo) && (
+        <div class="article-actions">
+          {data.github && <a href={data.github} target="_blank" rel="noopener" class="btn btn-outline btn-sm"><Icon name="github" size={16} /> Code source</a>}
+          {data.demo && <a href={data.demo} target="_blank" rel="noopener" class="btn btn-outline btn-sm"><Icon name="external" size={15} /> Démo</a>}
+        </div>
+      )}
+    </div>
+
+    {data.cover && (
+      <div class="article-cover"><img src={data.cover} alt={data.title} /></div>
+    )}
+
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</Base>

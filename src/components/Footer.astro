@@ -1,0 +1,15 @@
+---
+import { SITE } from '../site';
+import Icon from './Icon.astro';
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container footer-inner">
+    <small>© {year} {SITE.name}</small>
+    <div class="footer-social">
+      <a href={SITE.social.github} target="_blank" rel="noopener" aria-label="GitHub"><Icon name="github" /></a>
+      <a href={SITE.social.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" /></a>
+      <a href={`mailto:${SITE.email}`} aria-label="Email"><Icon name="mail" /></a>
+    </div>
+  </div>
+</footer>

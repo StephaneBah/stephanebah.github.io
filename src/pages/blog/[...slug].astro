@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { data } = entry;
+---
+<Base title={data.title} description={data.description} image={data.cover ?? '/assets/img/image.jpeg'} type="article">
+  <article class="article container">
+    <div class="article-head">
+      <a href="/blog" class="back-link"><Icon name="back" size={15} /> Retour aux articles</a>
+      <div class="article-meta">
+        <FormattedDate date={data.date} />
+        {data.readingTime && <span>{data.readingTime}</span>}
+      </div>
+      <h1 class="article-title">{data.title}</h1>
+      <p class="article-desc">{data.description}</p>
+      <div class="chip-row" style="margin-top:1rem;">{data.tags.map((t) => <span class="chip">{t}</span>)}</div>
+    </div>
+
+    {data.cover && (
+      <div class="article-cover"><img src={data.cover} alt={data.title} /></div>
+    )}
+
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</Base>

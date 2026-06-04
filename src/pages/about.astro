@@ -1,0 +1,113 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { SITE } from '../site';
+
+const focus = ['Machine Learning', 'NLP & LLMs', 'Computer Vision', 'ASR & Speech', 'Optimisation combinatoire', 'IA pour la santé', 'RAG Systems', 'Backend & API'];
+const stack = ['Python', 'SQL', 'Django', 'TensorFlow', 'PyTorch', 'OpenCV', 'Scikit-Image', 'NumPy', 'Pandas', 'Power BI'];
+
+const education = [
+  { title: 'Licence en Informatique, option Intelligence Artificielle', date: '2022 – 2026', org: "IFRI · Université d'Abomey-Calavi, Bénin", desc: 'Spécialisation IA & Data Science : Machine Learning, NLP, Computer Vision, Analyse de données, Optimisation. Mathématiques : Algèbre linéaire, Statistiques & Probabilités.' },
+  { title: 'Baccalauréat, Série C (Sciences)', date: '2022', org: 'CEG Pahou, Bénin', desc: 'Mention Très Bien.' },
+];
+
+const experience = [
+  { title: 'Développeur Web & IA', date: 'Nov 2025 – Jan 2026', org: 'Stage · SharayTalent, Cotonou', desc: "Backend Django pour une plateforme de gestion de talents pilotée par IA : extraction automatique de CV, analyse psychométrique et génération de quiz. Conception d'API, gestion de base de données et architecture." },
+  { title: 'Ingénieur IA', date: 'Juin 2025 – Sep 2025', org: 'Stage · AdjibolaTech, Bénin', desc: "Solutions de télémédecine basées sur l'IA : transcription temps réel et assistance médicale contextuelle. Modèle ASR adapté à l'accent africain du français en contexte médical ; WER réduit de 109,6 % à 20 %." },
+  { title: 'Développeur Backend', date: 'Juil 2024 – Sep 2024', org: 'Stage · Cabinet Jilmonde Consulting, Abomey-Calavi', desc: "Portail web pour une entreprise de production et de vente d'articles de presse." },
+];
+
+const organizations = [
+  { title: 'Ambassadeur AMLD Africa', date: '2025 – 2026', org: 'AMLD Africa', desc: 'Organise des événements AMLD au Bénin pour promouvoir une éducation IA inclusive, dans une initiative panafricaine de démocratisation de l’IA.' },
+];
+
+const awards = [
+  { title: 'Vainqueur · LLMs for OHADA Law Innovation Competition', date: 'Mai 2025', org: 'Force-N (Sénégal) · Zindi Africa' },
+  { title: 'NLP & Large Language Models', date: '2025', org: 'Force-N, Sénégal' },
+  { title: 'NeuroAI · Summer School 2025', date: 'Juil 2025', org: 'Neuromatch Academy' },
+  { title: 'ACP Summer School 2025', date: 'Août 2025', org: 'Association of Constraints Programming' },
+  { title: 'Virtual Deep Learning Indaba 2025', date: 'Août 2025', org: 'Deep Learning Indaba' },
+];
+---
+<Base title="À propos" description="Stéphane AHOLOU-BAH, AI Engineer basé au Bénin (IFRI-UAC). NLP, ASR, Computer Vision et ML appliqué à la santé et au droit africain.">
+  <div class="container about-grid">
+    <!-- Aside -->
+    <aside class="about-aside">
+      <img class="about-photo" src="/assets/img/image.jpeg" alt="Stéphane AHOLOU-BAH" width="260" height="325" />
+      <div class="about-links">
+        <a class="about-link" href={`mailto:${SITE.email}`}><Icon name="mail" size={16} /> {SITE.email}</a>
+        <a class="about-link" href={SITE.social.github} target="_blank" rel="noopener"><Icon name="github" size={16} /> github.com/StephaneBah</a>
+        <a class="about-link" href={SITE.social.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" size={16} /> linkedin.com/in/stephanebah</a>
+        <a class="about-link cv" href={SITE.cv} target="_blank" rel="noopener"><Icon name="cv" size={16} /> Télécharger le CV</a>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div>
+      <h1 class="about-name">Stéphane AHOLOU-BAH</h1>
+      <p class="about-role">AI Engineer · Aspirant Chercheur</p>
+      <p class="about-bio">Passionné par l'application de l'intelligence artificielle à des défis concrets : santé, sécurité publique, optimisation des ressources et traitement du langage. Mon objectif : concevoir des solutions IA qui améliorent l'efficacité, la prise de décision et l'accessibilité.</p>
+
+      <section class="about-block">
+        <h2>Domaines de prédilection</h2>
+        <div class="chip-row">{focus.map((f) => <span class="chip">{f}</span>)}</div>
+      </section>
+
+      <section class="about-block">
+        <h2>Stack technique</h2>
+        <div class="chip-row">{stack.map((s) => <span class="chip">{s}</span>)}</div>
+      </section>
+
+      <section class="about-block">
+        <h2>Formation</h2>
+        <div class="timeline">
+          {education.map((e) => (
+            <div class="tl-item">
+              <div class="tl-head"><span class="tl-title">{e.title}</span><span class="tl-date">{e.date}</span></div>
+              <p class="tl-org">{e.org}</p>
+              <p class="tl-desc">{e.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="about-block">
+        <h2>Expériences</h2>
+        <div class="timeline">
+          {experience.map((e) => (
+            <div class="tl-item">
+              <div class="tl-head"><span class="tl-title">{e.title}</span><span class="tl-date">{e.date}</span></div>
+              <p class="tl-org">{e.org}</p>
+              <p class="tl-desc">{e.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="about-block">
+        <h2>Organisations</h2>
+        <div class="timeline">
+          {organizations.map((e) => (
+            <div class="tl-item">
+              <div class="tl-head"><span class="tl-title">{e.title}</span><span class="tl-date">{e.date}</span></div>
+              <p class="tl-org">{e.org}</p>
+              <p class="tl-desc">{e.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="about-block">
+        <h2>Distinctions & certifications</h2>
+        <div class="timeline">
+          {awards.map((e) => (
+            <div class="tl-item">
+              <div class="tl-head"><span class="tl-title">{e.title}</span><span class="tl-date">{e.date}</span></div>
+              <p class="tl-org">{e.org}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  </div>
+</Base>

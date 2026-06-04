@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<Base title="Articles" description="Articles et notes de Stéphane AHOLOU-BAH sur l'IA, le machine learning et la recherche appliquée.">
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">Écrits</p>
+      <h1>Articles</h1>
+      <p>Notes de recherche, méthodologies et réflexions sur l'IA appliquée.</p>
+    </div>
+  </section>
+
+  <section class="container-narrow section" style="padding-top:2rem;">
+    {posts.length === 0 ? (
+      <div class="empty-state">
+        <p>Les premiers articles arrivent bientôt.</p>
+      </div>
+    ) : (
+      <div class="post-list">
+        {posts.map((post) => (
+          <a class="post-item" href={`/blog/${post.id}`}>
+            <div class="post-item-meta">
+              <FormattedDate date={post.data.date} />
+              {post.data.readingTime && <span>{post.data.readingTime}</span>}
+            </div>
+            <h2 class="post-item-title">{post.data.title}</h2>
+            <p class="post-item-desc">{post.data.description}</p>
+            <div class="chip-row" style="margin-top:.7rem;">{post.data.tags.slice(0, 4).map((t) => <span class="chip">{t}</span>)}</div>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+</Base>
