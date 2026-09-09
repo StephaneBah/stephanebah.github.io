@@ -2,38 +2,127 @@
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import Icon from '../../components/Icon.astro';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const featuredPost = posts.length > 0 ? posts[0] : null;
+const otherPosts = posts.length > 1 ? posts.slice(1) : [];
 ---
-<Base title="Articles" description="Articles et notes de Stéphane AHOLOU-BAH sur l'IA, le machine learning et la recherche appliquée.">
+<Base title="Blog" description="Articles and research notes by Stéphane AHOLOU-BAH on AI, NLP, ASR, and tech.">
   <section class="page-head">
     <div class="container">
-      <p class="eyebrow">Écrits</p>
-      <h1>Articles</h1>
-      <p>Notes de recherche, méthodologies et réflexions sur l'IA appliquée.</p>
+      <p class="eyebrow">Publications &amp; Notes</p>
+      <h1>Field Notes &amp; Reflections</h1>
+      <p>Experience write-ups, research methodologies, and AI engineering notes.</p>
     </div>
   </section>
 
-  <section class="container-narrow section" style="padding-top:2rem;">
+  <section class="container section" style="padding-top:2.5rem;">
     {posts.length === 0 ? (
       <div class="empty-state">
-        <p>Les premiers articles arrivent bientôt.</p>
+        <p>First posts coming very soon.</p>
       </div>
     ) : (
-      <div class="post-list">
-        {posts.map((post) => (
-          <a class="post-item" href={`/blog/${post.id}`}>
-            <div class="post-item-meta">
-              <FormattedDate date={post.data.date} />
-              {post.data.readingTime && <span>{post.data.readingTime}</span>}
+      <div>
+        {featuredPost && (
+          <div class="featured-post-card">
+            <div class="featured-post-meta">
+              <span class="featured-badge">Latest post</span>
+              <FormattedDate date={featuredPost.data.date} />
+              {featuredPost.data.readingTime && <span>· {featuredPost.data.readingTime}</span>}
             </div>
-            <h2 class="post-item-title">{post.data.title}</h2>
-            <p class="post-item-desc">{post.data.description}</p>
-            <div class="chip-row" style="margin-top:.7rem;">{post.data.tags.slice(0, 4).map((t) => <span class="chip">{t}</span>)}</div>
-          </a>
-        ))}
+            <h2 class="featured-post-title">
+              <a href={`/blog/${featuredPost.id}`}>{featuredPost.data.title}</a>
+            </h2>
+            <p class="featured-post-desc">{featuredPost.data.description}</p>
+            <div class="chip-row" style="margin-top: 1rem;">
+              {featuredPost.data.tags.map((t) => <span class="chip">{t}</span>)}
+            </div>
+            <div style="margin-top: 1.5rem;">
+              <a href={`/blog/${featuredPost.id}`} class="btn btn-primary btn-sm">
+                Read the post <Icon name="arrow" size={14} />
+              </a>
+            </div>
+          </div>
+        )}
+
+        {otherPosts.length > 0 && (
+          <div style="margin-top: 4rem;">
+            <h3 style="font-size: 1.6rem; margin-bottom: 1.5rem; border-bottom: 1px dashed var(--border); padding-bottom: 0.5rem;">
+              All posts
+            </h3>
+            <div class="post-list">
+              {otherPosts.map((post) => (
+                <a class="post-item" href={`/blog/${post.id}`}>
+                  <div class="post-item-meta">
+                    <FormattedDate date={post.data.date} />
+                    {post.data.readingTime && <span>· {post.data.readingTime}</span>}
+                  </div>
+                  <h3 class="post-item-title">{post.data.title}</h3>
+                  <p class="post-item-desc">{post.data.description}</p>
+                  <div class="chip-row" style="margin-top:.7rem;">
+                    {post.data.tags.slice(0, 4).map((t) => <span class="chip">{t}</span>)}
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     )}
   </section>
 </Base>
+
+<style>
+  .featured-post-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: clamp(1.8rem, 4vw, 3rem);
+    box-shadow: var(--shadow);
+    transition: all var(--transition);
+  }
+  .featured-post-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg);
+  }
+  .featured-post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .featured-badge {
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .featured-post-title {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    line-height: 1.15;
+    margin-bottom: 0.8rem;
+  }
+  .featured-post-title a {
+    color: var(--text);
+  }
+  .featured-post-title a:hover {
+    color: var(--primary);
+  }
+  .featured-post-desc {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 65ch;
+    line-height: 1.6;
+  }
+</style>

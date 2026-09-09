@@ -16,7 +16,9 @@ MedVoice est un projet de reconnaissance vocale (ASR) ciblant un angle mort des 
 
 ## Une contribution open source
 
-Au-delà du modèle, le projet a permis la constitution du **premier dataset open-source du français africain** destiné aux technologies de reconnaissance vocale dans le domaine médical : une ressource quasi inexistante jusqu'alors.
+Au-delà du modèle, le projet a permis la constitution du [premier dataset open-source du français africain](https://huggingface.co/datasets/StephaneBah/Africa_Radiology_FR) destiné aux technologies de reconnaissance vocale dans le domaine médical : une ressource quasi inexistante jusqu'alors.
+
+Ce travail constitue également le sujet de mon [Mémoire de Licence](https://www.dropbox.com/scl/fi/1c9ajjst86k4iq3728dkd/M-moire_Licence_St-phane_AHOLOU-BAH_16_04_2026.pdf?rlkey=h6gzq04vl7te97otph4qyqhrq&st=cp1a8v8g&dl=0).
 
 ## Résultat clé
 

@@ -1,0 +1,181 @@
+---
+title: "Exploring Computational Neuroscience with Neuromatch Academy"
+description: "From brain signals and behavioural data to computational models: my experience exploring Computational Neuroscience and analysing social interactions in mice with Neuromatch Academy."
+date: 2026-09-09
+tags: ["Computational Neuroscience", "Neuroscience", "AI", "Machine Learning", "Neuromatch Academy"]
+readingTime: "6 min"
+contributions: ["Data Analysis", "Feature Engineering", "Behaviour Modelling"]
+team: ["Pod Hati Samphire – Group Caltech"]
+draft: false
+---
+
+A month ago, I completed the **Neuromatch Academy Computational Neuroscience Summer School**, an experience that gave me a new perspective on the connection between neuroscience, mathematics and AI.
+
+Coming from an AI background, I was particularly interested in the computational side of neuroscience. The summer school showed me just how broad that connection really is.
+
+So, what is **Computational Neuroscience**?
+
+In simple terms, it is about using **mathematical and computational tools to understand the brain and behaviour**.
+
+In practice, researchers can work with very different types of observations.
+
+Electrical activity recorded from neurons using electrodes. Brain activity measured through techniques such as EEG or fMRI. Imaging data. Or simply behavioural data: movements, decisions and interactions.
+
+The interesting question comes next:
+
+**How do we make sense of all of this?**
+
+<HandwrittenNote align="center" rotate="-1deg">
+  🧠 Observation → Data → Model → Interpretation
+</HandwrittenNote>
+
+This is where computational neuroscience comes in.
+
+Signal processing can help extract meaningful patterns from biological signals. Statistical models can quantify relationships between different variables. Dynamical systems can describe how neural activity evolves over time. Machine learning can help decode information or predict behaviour.
+
+And sometimes, the process goes in the other direction.
+
+Instead of starting with recorded data, researchers can build mathematical models of neurons and neural networks to explore how relatively simple biological mechanisms could give rise to more complex computations, decisions or behaviours.
+
+The field therefore sits at the intersection of several disciplines, including **neuroscience, mathematics, statistics, physics and computer science**.
+
+<SideBySide caption="Left : Neural Activity Recording · Right : Behavioural Readout Example">
+
+![Neural Activity Recording](/assets/img/compneuro/a.png) 
+
+![Behaviour Capturing Example](/assets/img/compneuro/behaviour.png)
+
+</SideBySide>
+
+## More than one way to ask a question
+
+One thing I particularly appreciated during the summer school was realizing that different computational approaches allow us to ask different kinds of questions.
+
+During the course, we explored topics ranging from **model fitting and dimensionality reduction to Bayesian inference, neural dynamics, machine learning, decision-making, reinforcement learning and causality**.
+
+Some approaches are useful for identifying patterns in data.
+
+Others help us model how a system might evolve over time.
+
+Others allow us to study how an agent makes decisions under uncertainty or whether one phenomenon may actually influence another.
+
+The objective is not simply to apply an algorithm to neuroscience data.
+
+The important part is the **interpretation**: deciding what we want to measure, how to represent it, and what a model can actually tell us about the biological system we are studying.
+
+This was also where I found the connection with AI particularly interesting.
+
+Studying how biological systems process information, learn and make decisions can give us another perspective on artificial systems. At the same time, AI and machine learning provide increasingly powerful tools for analysing the enormous amount of data produced by modern neuroscience experiments.
+
+And sometimes, these two directions meet.
+
+## Our project: Can Movement Dynamics Classify and Predict Social Behaviours in Mice?
+
+For our final project, our group explored computational neuroscience from a different perspective: **behaviour**.
+
+Our research question was:
+
+# Can Movement Dynamics Classify and Predict Social Behaviours in Mice?
+
+We worked with the **CalMS21 dataset**, containing recordings of pairs of interacting mice in a resident-intruder experiment.
+
+Each mouse was represented through tracked 2D positions of multiple body parts, while the recordings were also annotated with social behaviours such as **investigation, attack and mounting**.
+
+![Tracking](/assets/img/compneuro/2.png)
+
+At first, this is simply a video of two mice interacting.
+
+Computationally, however, every frame becomes a collection of coordinates.
+
+Across thousands of frames, those coordinates become time series describing how each mouse moves.
+
+And once we include the relationship between the two animals, the problem becomes even more interesting.
+
+## Looking at the interaction, not just the mice
+
+Social behaviour is not only about what one individual does in isolation.
+
+It also depends on how another individual moves and responds.
+
+Instead of focusing only on the trajectory of each mouse independently, we explored features describing their **interaction dynamics**.
+
+This included measurements related to movement speed, distance, orientation and directional movement toward or away from the other mouse.
+
+We also developed an **engagement score** designed to quantify how each mouse was moving in relation to the other.
+
+![Kinemtics](/assets/img/compneuro/4.png)
+
+This was probably my favourite part of the project.
+
+A social interaction that we naturally observe as *"two animals interacting"* can be transformed into a computational representation containing multiple signals evolving over time.
+
+The question then becomes:
+
+**Do particular patterns in these signals correspond to particular behaviours?**
+
+Or even more interestingly:
+
+**Can the dynamics of an interaction tell us something about what may happen next?**
+
+<HandwrittenNote align="center" rotate="1deg" color="#047857">
+  💡 A behaviour is not just a single frame. It is a dynamic process unfolding over time.
+</HandwrittenNote>
+
+## From movement to behaviour
+
+We investigated whether these movement dynamics could be used to classify and predict social behaviours.
+
+Rather than treating a video frame as an isolated observation, we explored how movement features changed across time and how the two mice influenced the dynamics of their interaction.
+
+This is an important idea in behavioural analysis.
+
+The behaviour we observe at a particular moment can be the result of a sequence of movements and interactions that started earlier.
+
+In our case, we were focused on using our confrontation/engagement score as main predictor.
+
+<SideBySide caption="Left : Confrontation Score Maths · Right : Insights">
+
+![Score](/assets/img/compneuro/3.png) 
+
+![Insights](/assets/img/compneuro/3_2.png)
+
+</SideBySide>
+
+Combining the Confrontation Score with other features like speed; orientation and nose-to-nose distance worked quite well too.
+![Insights](/assets/img/compneuro/output4.png)
+
+Model Used: **Generalized Linear Model (GLM)**
+
+## Why does behavioural analysis matter?
+
+Animal behaviour provides a measurable window into processes such as social interaction and decision-making.
+
+But analysing behaviour is not always straightforward.
+
+Experiments can produce hours of video, thousands of frames and interactions that change within fractions of a second.
+
+Computational approaches allow researchers to move beyond simply watching and annotating these recordings manually.
+
+Movements can be quantified.
+
+Interactions can be represented as data.
+
+Patterns can be compared across experiments.
+
+And computational models can help researchers investigate relationships that would be difficult to detect by observation alone.
+
+For me, this is where the project became much more interesting than simply **classifying mouse behaviour**.
+
+The broader question was:
+
+> **How can we transform an observable interaction into a representation that allows us to ask meaningful scientific questions about it?**
+
+That question exists at many levels in computational neuroscience.
+
+A neural signal can become a time series.
+
+A movement can become a set of kinematic features.
+
+An interaction can become a mathematical representation.
+
+And computational models can help us move from raw observations toward explanations and hypotheses that we can test.

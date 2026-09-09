@@ -14,17 +14,17 @@ interface Props {
 }
 const {
   title,
-  description = "Portfolio de Stéphane AHOLOU-BAH, AI Engineer basé au Bénin. NLP, ASR, Computer Vision et ML appliqué à la santé et au droit africain.",
-  image = '/assets/img/image.jpeg',
+  description = "Portfolio of Stéphane AHOLOU-BAH — AI Scientist based in Benin. NLP, ASR, NeuroAI, and ML for health.",
+  image = '/assets/img/image.jpg',
   type = 'website',
 } = Astro.props;
 
-const pageTitle = title ? `${title} · ${SITE.name}` : `${SITE.name} · AI Engineer & Aspirant Chercheur`;
+const pageTitle = title ? `${title} · ${SITE.name}` : `${SITE.name} · AI Scientist & Aspirant Chercheur`;
 const canonical = new URL(Astro.url.pathname, SITE.url).href;
 const ogImage = new URL(image, SITE.url).href;
 ---
 <!doctype html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,7 +39,7 @@ const ogImage = new URL(image, SITE.url).href;
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -50,6 +50,11 @@ const ogImage = new URL(image, SITE.url).href;
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
+    <!-- Editorial Fonts: Instrument Serif, Caveat, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'Person',
@@ -57,11 +62,11 @@ const ogImage = new URL(image, SITE.url).href;
       url: SITE.url,
       image: ogImage,
       email: SITE.email,
-      jobTitle: 'AI Engineer & Aspiring Researcher',
+      jobTitle: 'AI Scientist & Aspiring Researcher',
       nationality: 'Beninese',
       address: { '@type': 'PostalAddress', addressLocality: 'Cotonou', addressCountry: 'BJ' },
       alumniOf: { '@type': 'CollegeOrUniversity', name: "IFRI · Université d'Abomey-Calavi" },
-      knowsAbout: ['Machine Learning', 'Natural Language Processing', 'Computer Vision', 'Speech Recognition', 'Combinatorial Optimization', 'Python'],
+      knowsAbout: ['Machine Learning', 'NeuroAI', 'Computational Neuroscience', 'Natural Language Processing', 'Speech Recognition', 'Python'],
       sameAs: [SITE.social.github, SITE.social.linkedin],
     })} />
   </head>

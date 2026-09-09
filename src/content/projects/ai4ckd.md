@@ -5,7 +5,7 @@ date: 2025-05-01
 category: ml
 tags: ["Python", "Scikit-learn", "Random Forest", "SVM", "Healthcare"]
 cover: "/assets/img/capture_AI4CKD_project.png"
-github: "https://github.com/StephaneBah"
+github: "https://github.com/StephaneBah/AI4CKD"
 demo: "https://ai4ckd-frontend.onrender.com"
 status: "Déployé"
 featured: true
@@ -13,7 +13,7 @@ featured: true
 
 ## Aperçu
 
-Dans le cadre du hackathon **AI4CKD**, nous avons développé un modèle de machine learning pour prédire les stades de la maladie rénale chronique (CKD) à partir de données cliniques et démographiques recueillies **avant les résultats des examens de laboratoire**. L'objectif : soutenir le diagnostic précoce et améliorer la prise en charge des patients.
+Dans le cadre du hackathon **AI4CKD**, nous avons développé un modèle de machine learning pour prédire les stades de la maladie rénale chronique (CKD) à partir de données cliniques et démographiques recueillies **avant les résultats des examens de laboratoire**. L'objectif : soutenir le diagnostic précoce et améliorer la prise en charge des patients. Consulez le [Dossier / Rapport du projet](https://drive.google.com/drive/folders/1Dypyzuf7-goThv3wdRbRMvCdjSUPxpay?usp=drive_link).
 
 ## Données
 

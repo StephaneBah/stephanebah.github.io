@@ -1,0 +1,39 @@
+---
+interface Props {
+  align?: 'left' | 'center' | 'right';
+  rotate?: string;
+  color?: string;
+}
+const { align = 'left', rotate = '-1deg', color = '#d9531e' } = Astro.props;
+---
+<div class="handwritten-note" style={`--note-align: ${align}; --note-rotate: ${rotate}; --note-color: ${color};`}>
+  <div class="handwritten-inner">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .handwritten-note {
+    font-family: var(--font-hand, 'Caveat', cursive);
+    font-size: 1.55rem;
+    line-height: 1.35;
+    color: var(--note-color, #d9531e);
+    text-align: var(--note-align, left);
+    transform: rotate(var(--note-rotate, -1deg));
+    margin-block: 1.4rem;
+    padding: 0.5rem 0.75rem;
+    transition: transform 0.2s ease;
+  }
+  .handwritten-note:hover {
+    transform: rotate(0deg) scale(1.02);
+  }
+  .handwritten-inner {
+    display: inline-block;
+  }
+  .handwritten-note :global(p) {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+  }
+</style>

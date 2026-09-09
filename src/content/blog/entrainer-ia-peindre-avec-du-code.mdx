@@ -1,0 +1,78 @@
+---
+title: "Entraîner un modèle de langage à peindre avec du code"
+description: "Comment nous avons utilisé l'apprentissage par renforcement (RL) pour apprendre à un LLM à produire de véritables aquarelles génératives en code interactif."
+date: 2026-03-09
+tags: ["Reinforcement Learning", "LLM", "Creative AI", "Design"]
+readingTime: "6 min"
+contributions: ["Recherche RL", "Architecture LLM", "Évaluation"]
+team: ["Stéphane AHOLOU-BAH", "Collaborateurs de recherche"]
+draft: true
+---
+
+Quand on génère une image avec un modèle d'IA classique, la seule façon d'interagir est d'écrire un prompt. Impossible de retoucher directement les traits : chaque modification demande de régénérer l'ensemble de zéro.
+
+Ce projet explore une approche radicalement différente : **faire écrire du code de rendu au modèle**. Le code devient l'artefact principal, inspectable, modifiable au pixel près et réutilisable.
+
+<HandwrittenNote align="center" rotate="-1.5deg">
+  ✍️ "Le code est le support créatif le plus modulable qu'on puisse donner à une IA."
+</HandwrittenNote>
+
+## La boucle d'entraînement en renforcement
+
+La vraie difficulté dans l'application du Reinforcement Learning (RL) à la créativité réside dans la fonction de récompense. En mathématiques ou aux échecs, une réponse est soit vraie, soit fausse. En esthétique, comment guider le gradient sans que le modèle ne s'effondre dans une solution banale ?
+
+Nous avons mis en place une boucle en 4 étapes exécutée des milliers de fois :
+
+1. **Prompt créatif** : Le modèle reçoit une consigne (ex: *« une fleur d'hibiscus en aquarelle »*).
+2. **Génération de code** : Il produit un script JavaScript utilisant des brosses d'aquarelle procédurales.
+3. **Rendu headless** : Le code est exécuté dans un bac à sable Chromium pour produire un rendu PNG.
+4. **Juge & Récompense (GRPO)** : Le rendu est évalué face à un pool d'œuvres de référence par un juge multimodal qui transmet son signal de mise à jour.
+
+<MetricCard 
+  label="Précision esthétique & conformité"
+  before="42 %"
+  after="88 %"
+  delta="+46 %"
+  description="Gain mesuré par évaluation en double aveugle humaine face aux baselines sans RL."
+/>
+
+## Le code et son rendu
+
+Voici un aperçu de la façon dont le modèle structure sa toile en coordonnées polaires et textures de papier :
+
+<SideBySide caption="À gauche : Le rendu produit · À droite : Le script JavaScript généré par le modèle">
+
+![Aquarelle procédurale d'Hibiscus](/assets/img/MedVoice_Interface.png)
+
+```javascript
+// Généré par le modèle guidé par RL
+function drawPetal(angle, length, spread) {
+  brush.noStroke();
+  brush.pickColor("#e54b34");
+  
+  for (let i = 0; i < length; i += 6) {
+    let radius = Math.sin(i / length * Math.PI) * spread;
+    brush.fillCircle(
+      cx + Math.cos(angle) * i,
+      cy + Math.sin(angle) * i,
+      radius
+    );
+  }
+}
+```
+
+</SideBySide>
+
+## Ce que nous avons appris
+
+Le gradient créatif est fragile. Si les contraintes sont trop strictes, le modèle converge vers un unique dessin générique qu'il répète à l'infini. Si elles sont trop lâches, le modèle produit des artefacts abstraits.
+
+L'astuce a été de calibrer la récompense non pas sur le pixel brut, mais sur **la variété des techniques de brosses** utilisées dans le code.
+
+<HandwrittenNote align="left" rotate="1deg" color="#047857">
+  💡 Prochaine étape : intégrer ce pipeline dans un canvas interactif en temps réel !
+</HandwrittenNote>
+
+---
+
+*Des questions ou envie de discuter d'IA générative et de RL ? N'hésitez pas à m'écrire par email ou sur LinkedIn.*

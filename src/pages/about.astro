@@ -3,81 +3,201 @@ import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { SITE } from '../site';
 
-const focus = ['Machine Learning', 'NLP & LLMs', 'Computer Vision', 'ASR & Speech', 'Optimisation combinatoire', 'IA pour la santé', 'RAG Systems', 'Backend & API'];
+const focus = ['Machine Learning', 'NLP & LLMs', 'NeuroAI', 'ASR & Speech', 'Human-Inspired AI', 'AI for Health', 'AI Centered Systems', 'Backend & API'];
 const stack = ['Python', 'SQL', 'Django', 'TensorFlow', 'PyTorch', 'OpenCV', 'Scikit-Image', 'NumPy', 'Pandas', 'Power BI'];
 
 const education = [
-  { title: 'Licence en Informatique, option Intelligence Artificielle', date: '2022 – 2026', org: "IFRI · Université d'Abomey-Calavi, Bénin", desc: 'Spécialisation IA & Data Science : Machine Learning, NLP, Computer Vision, Analyse de données, Optimisation. Mathématiques : Algèbre linéaire, Statistiques & Probabilités.' },
-  { title: 'Baccalauréat, Série C (Sciences)', date: '2022', org: 'CEG Pahou, Bénin', desc: 'Mention Très Bien.' },
+  {
+    title: 'Bachelor of Science in Computer Science — Artificial Intelligence',
+    date: '10/2022 – 04/2026',
+    org: "IFRI · University of Abomey-Calavi, Abomey-Calavi, Benin",
+    desc: 'Specialisation in AI & Data Science: Machine Learning, NLP, Computer Vision, Data Analysis, Optimisation. Mathematics: Calculus, Linear Algebra, Statistics, Probability, Algebraic Structures. Programming: OOP, Data Structures, Application Development.\nGPA: Y1: 16.02/20 | Y2: 15.62/20 | Y3: 15.45/20.',
+    url: 'https://ifri-uac.bj/'
+  },
+  {
+    title: 'Baccalauréat — Science Track (Série C)',
+    date: '2022',
+    org: 'CEG Pahou, Ouidah, Benin',
+    desc: 'Highest Honours (16.27/20).'
+  },
 ];
 
 const experience = [
-  { title: 'Développeur Web & IA', date: 'Nov 2025 – Jan 2026', org: 'Stage · SharayTalent, Cotonou', desc: "Backend Django pour une plateforme de gestion de talents pilotée par IA : extraction automatique de CV, analyse psychométrique et génération de quiz. Conception d'API, gestion de base de données et architecture." },
-  { title: 'Ingénieur IA', date: 'Juin 2025 – Sep 2025', org: 'Stage · AdjibolaTech, Bénin', desc: "Solutions de télémédecine basées sur l'IA : transcription temps réel et assistance médicale contextuelle. Modèle ASR adapté à l'accent africain du français en contexte médical ; WER réduit de 109,6 % à 20 %." },
-  { title: 'Développeur Backend', date: 'Juil 2024 – Sep 2024', org: 'Stage · Cabinet Jilmonde Consulting, Abomey-Calavi', desc: "Portail web pour une entreprise de production et de vente d'articles de presse." },
-];
-
-const organizations = [
-  { title: 'Ambassadeur AMLD Africa', date: '2025 – 2026', org: 'AMLD Africa', desc: 'Organise des événements AMLD au Bénin pour promouvoir une éducation IA inclusive, dans une initiative panafricaine de démocratisation de l’IA.' },
+  {
+    title: 'AI Consultant',
+    date: '04/2026 – Present',
+    org: 'Agénce de Développement de Sèmè City, Cotonou, Benin',
+    desc: 'Consulting and implementation of a programming & AI training programme for middle school students.',
+    url: 'https://semecity.bj/fr/'
+  },
+  {
+    title: 'ML Mentor — IOAI 2026 Preparation Phase (Volunteering)',
+    date: '07/2026',
+    org: 'Sèmè City',
+    desc: 'ML mentor for the preparation phase of the International Olympiad in Artificial Intelligence (IOAI) 2026.',
+    url: 'https://semecity.bj/fr/post/ioai-2026-le-benin-decroche-sa-premiere-medaille-et-se-classe-3e-au-niveau-africain/'
+  },
+  {
+    title: 'Operations Coordinator of iSheero AI Saturdays (Volunteering)',
+    date: '2026 – Present',
+    org: 'iSheero',
+    desc: 'Operations coordinator for the iSheero AI Saturdays community events.',
+    url: 'https://www.isheero.com/'
+  },
+  {
+    title: 'Web & AI Developer — Internship',
+    date: '11/2025 – 01/2026',
+    org: 'SharayTalent, Cotonou, Benin',
+    desc: 'Django backend for an AI-driven talent management platform: automated CV extraction, psychometric analysis, and quiz generation. API design, database management and architecture.',
+    url: 'https://beta.talent.sharay.tech/en'
+  },
+  {
+    title: 'AMLD Node Benin Ambassador & Coordinator (Volunteering)',
+    date: '2025 – Present',
+    org: 'AMLD Africa',
+    desc: 'Organising AMLD events in Benin to promote inclusive AI education as part of a pan-African initiative to democratise AI.',
+    url: 'https://www.linkedin.com/company/amld-africa/posts/?feedView=all'
+  },
+  {
+    title: 'AI Engineering Intern',
+    date: '06/2025 – 09/2025',
+    org: 'AdjibolaTech, Benin',
+    desc: 'AI-based telemedicine solutions: real-time transcription and contextual medical assistance. ASR model adapted to African French accents in a medical context; WER reduced from 109.6 % to 20 %.',
+    url: 'https://adjibola.tech/'
+  },
+  {
+    title: 'Backend Development Intern',
+    date: '07/2024 – 09/2024',
+    org: 'Cabinet Jilmonde Consulting, Abomey-Calavi, Benin',
+    desc: 'Web portal for a company that produces and sells newspaper articles.',
+    url: 'https://jilmondeconsulting.com/'
+  },
 ];
 
 const awards = [
-  { title: 'Vainqueur · LLMs for OHADA Law Innovation Competition', date: 'Mai 2025', org: 'Force-N (Sénégal) · Zindi Africa' },
-  { title: 'NLP & Large Language Models', date: '2025', org: 'Force-N, Sénégal' },
-  { title: 'NeuroAI · Summer School 2025', date: 'Juil 2025', org: 'Neuromatch Academy' },
-  { title: 'ACP Summer School 2025', date: 'Août 2025', org: 'Association of Constraints Programming' },
-  { title: 'Virtual Deep Learning Indaba 2025', date: 'Août 2025', org: 'Deep Learning Indaba' },
+  {
+    title: 'Ambassador Certificate for Official Broadcast Organizing in Benin',
+    date: '2026',
+    org: 'AMLD Africa 2026'
+  },
+  {
+    title: 'Winner · LLMs for OHADA Law Innovation Competition',
+    date: '05/2025',
+    org: 'Force-N (Senegal) · Zindi Africa',
+    desc: 'Challenge organised after a training programme in AI & NLP. Built a legal Q&A system based on retrieval-augmented generation.',
+    url: 'https://zindi.africa/competitions/force-n-competition-sur-les-large-language-models-llms-pour-le-droit-ohada/leaderboard'
+  },
+  {
+    title: 'Benin Government Excellence Scholarship',
+    date: '2022',
+    org: 'Government of Benin'
+  },
+];
+
+const certificates = [
+  {
+    title: 'GCI World April 2026',
+    date: '04/2026 – 08/2026',
+    org: 'Matsuo-Iwasawa Laboratory, University of Tokyo',
+    url: 'https://edu.omnicamp.us/en/courses/137/certification/?certificationType=COMPLETED'
+  },
+  {
+    title: 'Computational Neuroscience - Summer School 2026',
+    date: '07/2026',
+    org: 'Neuromatch Academy',
+    url: 'https://portal.neuromatchacademy.org/certificate/380df75f-5f44-41e5-b273-27f6bf80fba2'
+  },
+  {
+    title: 'ML Engineering',
+    date: '04/2026',
+    org: 'iSHEERO X DataCamp Program',
+    url: 'https://drive.google.com/file/d/1ZzpV7IGNACQsWSfVhnaY7u9TtxauYfed/view?usp=sharing'
+  },
+  {
+    title: 'ACP Summer School 2025',
+    date: '08/2025',
+    org: 'Association of Constraints Programming',
+    url: 'https://drive.google.com/file/d/1bFjqXFtGFg6J26ho3RPZXyiZdpBVgd2F/view?usp=sharing'
+  },
+  {
+    title: 'NeuroAI - Summer School 2025',
+    date: '07/2025',
+    org: 'Neuromatch Academy',
+    url: 'https://portal.neuromatchacademy.org/certificate/b40b74c9-aa61-4ce8-90fd-984f4abe7e4b'
+  },
+  {
+    title: 'Natural Language Processing & Large Language Models',
+    date: '04/2025',
+    org: 'Force-N Senegal',
+    url: 'https://drive.google.com/file/d/18fYf7mUzwBvYhIqQ5GxCHsc5KUxpxIrE/view?usp=sharing'
+  },
+  {
+    title: 'IBM Data Science Professional Certificate',
+    date: '2025',
+    org: 'Coursera',
+    url: 'https://drive.google.com/file/d/1_0arGnz6WeazFzn_obGO0PmpVxzn3sS0/view?usp=drivesdk'
+  },
 ];
 ---
-<Base title="À propos" description="Stéphane AHOLOU-BAH, AI Engineer basé au Bénin (IFRI-UAC). NLP, ASR, Computer Vision et ML appliqué à la santé et au droit africain.">
+<Base title="About" description="Stéphane AHOLOU-BAH, AI Scientist based in Benin (IFRI-UAC). NLP, ASR, NeuroAI, and ML for health.">
   <div class="container about-grid">
     <!-- Aside -->
     <aside class="about-aside">
-      <img class="about-photo" src="/assets/img/image.jpeg" alt="Stéphane AHOLOU-BAH" width="260" height="325" />
+      <img class="about-photo" src="/assets/img/image.jpg" alt="Stéphane AHOLOU-BAH" width="260" height="325" />
       <div class="about-links">
         <a class="about-link" href={`mailto:${SITE.email}`}><Icon name="mail" size={16} /> {SITE.email}</a>
         <a class="about-link" href={SITE.social.github} target="_blank" rel="noopener"><Icon name="github" size={16} /> github.com/StephaneBah</a>
         <a class="about-link" href={SITE.social.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" size={16} /> linkedin.com/in/stephanebah</a>
-        <a class="about-link cv" href={SITE.cv} target="_blank" rel="noopener"><Icon name="cv" size={16} /> Télécharger le CV</a>
+        <a class="about-link cv" href={SITE.cv} target="_blank" rel="noopener"><Icon name="cv" size={16} /> Download CV</a>
       </div>
     </aside>
 
     <!-- Main -->
     <div>
       <h1 class="about-name">Stéphane AHOLOU-BAH</h1>
-      <p class="about-role">AI Engineer · Aspirant Chercheur</p>
-      <p class="about-bio">Passionné par l'application de l'intelligence artificielle à des défis concrets : santé, sécurité publique, optimisation des ressources et traitement du langage. Mon objectif : concevoir des solutions IA qui améliorent l'efficacité, la prise de décision et l'accessibilité.</p>
+      <p class="about-role">AI Scientist · Aspiring Researcher</p>
+      <p class="about-bio">I am driven by the application of artificial intelligence to real-world challenges: health, public safety, resource optimisation, and language processing. My goal is to design AI solutions that improve efficiency, decision-making, and accessibility.</p>
 
       <section class="about-block">
-        <h2>Domaines de prédilection</h2>
+        <h2>Focus Areas</h2>
         <div class="chip-row">{focus.map((f) => <span class="chip">{f}</span>)}</div>
       </section>
 
       <section class="about-block">
-        <h2>Stack technique</h2>
+        <h2>Technical Stack</h2>
         <div class="chip-row">{stack.map((s) => <span class="chip">{s}</span>)}</div>
       </section>
 
       <section class="about-block">
-        <h2>Formation</h2>
+        <h2>Education</h2>
         <div class="timeline">
           {education.map((e) => (
             <div class="tl-item">
-              <div class="tl-head"><span class="tl-title">{e.title}</span><span class="tl-date">{e.date}</span></div>
-              <p class="tl-org">{e.org}</p>
-              <p class="tl-desc">{e.desc}</p>
+              <div class="tl-head">
+                <span class="tl-title">{e.title}</span>
+                <span class="tl-date">{e.date}</span>
+              </div>
+              <p class="tl-org">
+                {e.url ? <a href={e.url} target="_blank" rel="noopener">{e.org} ↗</a> : e.org}
+              </p>
+              <p class="tl-desc" style="white-space: pre-line;">{e.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
       <section class="about-block">
-        <h2>Expériences</h2>
+        <h2>Experience &amp; Engagements</h2>
         <div class="timeline">
           {experience.map((e) => (
             <div class="tl-item">
-              <div class="tl-head"><span class="tl-title">{e.title}</span><span class="tl-date">{e.date}</span></div>
-              <p class="tl-org">{e.org}</p>
+              <div class="tl-head">
+                <span class="tl-title">{e.title}</span>
+                <span class="tl-date">{e.date}</span>
+              </div>
+              <p class="tl-org">
+                {e.url ? <a href={e.url} target="_blank" rel="noopener">{e.org} ↗</a> : e.org}
+              </p>
               <p class="tl-desc">{e.desc}</p>
             </div>
           ))}
@@ -85,25 +205,35 @@ const awards = [
       </section>
 
       <section class="about-block">
-        <h2>Organisations</h2>
+        <h2>Awards &amp; Distinctions</h2>
         <div class="timeline">
-          {organizations.map((e) => (
+          {awards.map((a) => (
             <div class="tl-item">
-              <div class="tl-head"><span class="tl-title">{e.title}</span><span class="tl-date">{e.date}</span></div>
-              <p class="tl-org">{e.org}</p>
-              <p class="tl-desc">{e.desc}</p>
+              <div class="tl-head">
+                <span class="tl-title">{a.title}</span>
+                <span class="tl-date">{a.date}</span>
+              </div>
+              <p class="tl-org">
+                {a.url ? <a href={a.url} target="_blank" rel="noopener">{a.org} ↗</a> : a.org}
+              </p>
+              {a.desc && <p class="tl-desc">{a.desc}</p>}
             </div>
           ))}
         </div>
       </section>
 
       <section class="about-block">
-        <h2>Distinctions & certifications</h2>
+        <h2>Certifications</h2>
         <div class="timeline">
-          {awards.map((e) => (
+          {certificates.map((c) => (
             <div class="tl-item">
-              <div class="tl-head"><span class="tl-title">{e.title}</span><span class="tl-date">{e.date}</span></div>
-              <p class="tl-org">{e.org}</p>
+              <div class="tl-head">
+                <span class="tl-title">{c.title}</span>
+                <span class="tl-date">{c.date}</span>
+              </div>
+              <p class="tl-org">
+                {c.url ? <a href={c.url} target="_blank" rel="noopener">{c.org} ↗</a> : c.org}
+              </p>
             </div>
           ))}
         </div>
@@ -111,3 +241,4 @@ const awards = [
     </div>
   </div>
 </Base>
+

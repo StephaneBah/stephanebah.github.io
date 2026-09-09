@@ -3,6 +3,9 @@ import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import SideBySide from '../../components/mdx/SideBySide.astro';
+import HandwrittenNote from '../../components/mdx/HandwrittenNote.astro';
+import MetricCard from '../../components/mdx/MetricCard.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -12,18 +15,49 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const { data } = entry;
+
+const hasContributions = data.contributions && data.contributions.length > 0;
+const hasTeam = data.team && data.team.length > 0;
 ---
 <Base title={data.title} description={data.description} image={data.cover ?? '/assets/img/image.jpeg'} type="article">
   <article class="article container">
     <div class="article-head">
-      <a href="/blog" class="back-link"><Icon name="back" size={15} /> Retour aux articles</a>
+      <a href="/blog" class="back-link"><Icon name="back" size={15} /> Back to blog</a>
+      
       <div class="article-meta">
         <FormattedDate date={data.date} />
-        {data.readingTime && <span>{data.readingTime}</span>}
+        {data.readingTime && <span>· {data.readingTime}</span>}
       </div>
+
       <h1 class="article-title">{data.title}</h1>
       <p class="article-desc">{data.description}</p>
-      <div class="chip-row" style="margin-top:1rem;">{data.tags.map((t) => <span class="chip">{t}</span>)}</div>
+
+      {data.tags && data.tags.length > 0 && (
+        <div class="chip-row" style="margin-top: 1.2rem;">
+          {data.tags.map((t: string) => <span class="chip">{t}</span>)}
+        </div>
+      )}
+
+      {(hasContributions || hasTeam) && (
+        <div class="article-roles-grid">
+          {hasContributions && (
+            <div class="roles-group">
+              <span class="roles-label">My contributions</span>
+              <div class="roles-chips">
+                {data.contributions.map((c: string) => <span class="chip">{c}</span>)}
+              </div>
+            </div>
+          )}
+          {hasTeam && (
+            <div class="roles-group">
+              <span class="roles-label">Team / Collaborators</span>
+              <div class="roles-chips">
+                {data.team.map((m: string) => <span class="chip">{m}</span>)}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </div>
 
     {data.cover && (
@@ -31,7 +65,7 @@ const { data } = entry;
     )}
 
     <div class="prose">
-      <Content />
+      <Content components={{ SideBySide, HandwrittenNote, MetricCard }} />
     </div>
   </article>
 </Base>

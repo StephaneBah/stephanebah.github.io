@@ -10,14 +10,14 @@ const projects = (await getCollection('projects', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const usedCats = [...new Set(projects.map((p) => p.data.category))];
-const filters = [{ key: 'all', label: 'Tous' }, ...usedCats.map((c) => ({ key: c, label: CATEGORY_LABELS[c] ?? c }))];
+const filters = [{ key: 'all', label: 'All' }, ...usedCats.map((c) => ({ key: c, label: CATEGORY_LABELS[c] ?? c }))];
 ---
-<Base title="Projets" description="Projets de Stéphane AHOLOU-BAH : MedVoice (ASR médical), AI4CKD, OHADA Law (RAG), Computer Vision, optimisation combinatoire.">
+<Base title="Projects" description="Projects by Stéphane AHOLOU-BAH: MedVoice (medical ASR), AI4CKD, OHADA Law (RAG), Computer Vision, combinatorial optimisation.">
   <section class="page-head">
     <div class="container">
-      <p class="eyebrow">Travaux</p>
-      <h1>Projets</h1>
-      <p>Recherche appliquée et systèmes ML : du problème à la méthodologie, jusqu'aux résultats.</p>
+      <p class="eyebrow">Work</p>
+      <h1>Projects</h1>
+      <p>Applied research and ML systems: from problem statement to methodology, through to results.</p>
     </div>
   </section>
 

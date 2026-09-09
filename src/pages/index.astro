@@ -9,6 +9,10 @@ import { SITE } from '../site';
 const projects = (await getCollection('projects', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 const featured = projects.filter((p) => p.data.featured).concat(projects.filter((p) => !p.data.featured)).slice(0, 3);
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 2);
 ---
 <Base>
   <!-- Hero -->
@@ -16,35 +20,41 @@ const featured = projects.filter((p) => p.data.featured).concat(projects.filter(
     <div class="hero-grid">
       <div class="fade-up">
         <p class="eyebrow">{SITE.role}</p>
-        <h1>Stéphane<br /><span class="accent">AHOLOU-BAH</span></h1>
-        <p class="hero-lead">{SITE.tagline}</p>
+        <h1>Stéphane <span class="hero-highlight">AHOLOU-BAH</span></h1>
+        <p class="hero-lead">
+          I believe in an AI that is useful and responsible, designed for the realities and contexts that technology too often overlooks.
+        </p>
+        <p style="font-size: 0.95rem; color: var(--text-tertiary); margin-top: 0.75rem; font-family: var(--font-mono);">
+          📍 Cotonou, Benin · IFRI-UAC · AMLD Africa Ambassador
+        </p>
         <div class="hero-actions">
-          <a href="/projects" class="btn btn-primary">Voir les projets <Icon name="arrow" size={16} /></a>
-          <a href="/about" class="btn btn-outline">À propos</a>
+          <a href="/projects" class="btn btn-primary">Projects <Icon name="arrow" size={16} /></a>
+          <a href="/blog" class="btn btn-outline">Blog</a>
+          <a href="/about" class="btn btn-outline">About</a>
         </div>
         <div class="hero-social">
-          <a href={SITE.social.github} target="_blank" rel="noopener" aria-label="GitHub"><Icon name="github" size={22} /></a>
-          <a href={SITE.social.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" size={22} /></a>
-          <a href={`mailto:${SITE.email}`} aria-label="Email"><Icon name="mail" size={22} /></a>
+          <a href={SITE.social.github} target="_blank" rel="noopener" aria-label="GitHub"><Icon name="github" size={20} /></a>
+          <a href={SITE.social.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" size={20} /></a>
+          <a href={`mailto:${SITE.email}`} aria-label="Email"><Icon name="mail" size={20} /></a>
         </div>
       </div>
       <div class="hero-photo fade-up">
-        <img src="/assets/img/image.jpeg" alt="Stéphane AHOLOU-BAH" width="230" height="290" />
+        <img src="/assets/img/image.jpg" alt="Stéphane AHOLOU-BAH" width="240" height="300" />
       </div>
     </div>
   </section>
 
   <!-- Featured projects -->
-  <section class="container section" style="padding-top:0;">
-    <div style="display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap;">
+  <section class="container section" style="padding-top: 2rem; padding-bottom: 3.5rem;">
+    <div style="display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap; margin-bottom: 1.8rem;">
       <div>
-        <p class="eyebrow">Sélection</p>
-        <h2 class="section-title">Projets en avant</h2>
+        <p class="eyebrow">Selection</p>
+        <h2 class="section-title">Research &amp; Projects</h2>
       </div>
-      <a href="/projects" class="btn btn-outline btn-sm">Tous les projets <Icon name="arrow" size={15} /></a>
+      <a href="/projects" class="btn btn-outline btn-sm">All projects ({projects.length}) <Icon name="arrow" size={15} /></a>
     </div>
 
-    <div class="project-list" style="margin-top:1.5rem;">
+    <div class="project-list">
       {featured.map((p) => {
         const hasCover = !!p.data.cover;
         return (
@@ -68,14 +78,39 @@ const featured = projects.filter((p) => p.data.featured).concat(projects.filter(
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- Recent Articles -->
+  {posts.length > 0 && (
+    <section class="container section" style="padding-top: 1rem; padding-bottom: 4rem;">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap; margin-bottom: 1.8rem;">
+        <div>
+          <p class="eyebrow">Thoughts &amp; Notes</p>
+          <h2 class="section-title">Recent posts</h2>
+        </div>
+        <a href="/blog" class="btn btn-outline btn-sm">All posts <Icon name="arrow" size={15} /></a>
+      </div>
+
+      <div class="post-list">
+        {posts.map((post) => (
+          <a href={`/blog/${post.id}`} class="post-item">
+            <div class="post-item-meta">
+              <FormattedDate date={post.data.date} />
+              {post.data.readingTime && <span>· {post.data.readingTime}</span>}
+            </div>
+            <h3 class="post-item-title">{post.data.title}</h3>
+            <p class="post-item-desc">{post.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
   <section class="contact container-narrow" id="contact">
-    <p class="eyebrow">Contact</p>
-    <h2>Restons en contact</h2>
-    <p>Discutons d'IA, de recherche ou de collaboration.</p>
+    <p class="eyebrow">Collaboration</p>
+    <h2>Let’s build something together</h2>
+    <p>Research, AI engineering, health, or collaboration opportunities.</p>
     <div class="hero-actions" style="justify-content:center;">
       <a href={`mailto:${SITE.email}`} class="btn btn-primary"><Icon name="mail" size={16} /> {SITE.email}</a>
-      <a href={SITE.cv} target="_blank" rel="noopener" class="btn btn-outline"><Icon name="cv" size={16} /> Télécharger le CV</a>
+      <a href={SITE.cv} target="_blank" rel="noopener" class="btn btn-outline"><Icon name="cv" size={16} /> Download CV</a>
     </div>
   </section>
 </Base>

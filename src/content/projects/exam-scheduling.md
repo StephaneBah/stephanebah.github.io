@@ -4,7 +4,7 @@ description: "Génération automatique de calendriers d'examens universitaires p
 date: 2024-12-01
 category: opt
 tags: ["Python", "Constraint Programming", "Optimisation", "Recherche Opérationnelle"]
-github: "https://github.com/StephaneBah"
+github: "https://github.com/Ynvers/Planification_exams"
 status: "Terminé"
 ---
 
