@@ -4,7 +4,7 @@ export const SITE = {
   role: 'AI Scientist · Aspiring Researcher',
   tagline:
     "I believe in an AI that is useful and responsible — designed for the realities and contexts that technology too often overlooks.",
-  url: 'https://stephanebah.me',
+  url: 'https://stephanebah.github.io',
   email: 'stephane.ahbah@gmail.com',
   location: 'Cotonou, Bénin',
   cv: '/assets/AHOLOU-BAH_Stéphane_CV.pdf',

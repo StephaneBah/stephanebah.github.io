@@ -5,7 +5,7 @@
 - **Nationality**: Beninese
 - **LinkedIn**: [LinkedIn](https://www.linkedin.com/in/stephanebah/)
 - **GitHub**: [github.com/StephaneBah](https://github.com/StephaneBah)
-- **Portfolio**: [stephanebah.me](https://stephanebah.github.io/)
+- **Portfolio**: [stephanebah.github.io](https://stephanebah.github.io/)
 
 ---
 

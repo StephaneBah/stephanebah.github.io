@@ -8,7 +8,7 @@ draft: true
 ---
 
 Ceci est le chapeau de l'article (premier paragraphe). Écris ici en **gras**,
-en *italique*, avec des [liens](https://stephanebah.me) ou du `code inline`.
+en *italique*, avec des [liens](https://stephanebah.github.io) ou du `code inline`.
 
 ## Une section principale
 

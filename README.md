@@ -1,4 +1,4 @@
-# stephanebah.me
+# stephanebah.github.io
 
 Portfolio personnel de Stéphane AHOLOU-BAH, construit avec [Astro](https://astro.build).
 
@@ -32,7 +32,7 @@ Chaque projet / article est un fichier Markdown en **deux parties** :
 ## A. Ajouter un projet (pas à pas)
 
 1. **Crée le fichier** `src/content/projects/mon-projet.md`
-   (le nom du fichier = l'URL → `stephanebah.me/projects/mon-projet`).
+   (le nom du fichier = l'URL → `stephanebah.github.io/projects/mon-projet`).
 2. **Colle ce gabarit** en haut et remplis-le :
 
 ```markdown
@@ -151,10 +151,9 @@ Le site se reconstruit et se met en ligne automatiquement (voir Déploiement).
 Le déploiement est automatique à chaque `push` sur `main`, via GitHub Actions
 (`.github/workflows/deploy.yml`).
 
-> ⚠️ Réglage à faire **une seule fois** : dans le dépôt GitHub →
-> **Settings → Pages → Build and deployment → Source : GitHub Actions**.
+> ⚠️ Réglage dans le dépôt GitHub : **Settings → Pages → Build and deployment → Source : GitHub Actions**.
 
-Le domaine `stephanebah.me` est conservé via `public/CNAME`.
+Le site est accessible directement sur `https://stephanebah.github.io`.
 
 ## Structure
 
